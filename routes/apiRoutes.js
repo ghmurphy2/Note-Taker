@@ -4,13 +4,14 @@ const router = require('express').Router();
 const path = require('path')
 
 const newNote = require("../db/db.json");
-app.get("/api/notes/", function(req,res) {
+router.get("/api/notes/", function(req,res) {
         res.json(newNote);
     });
 
-app.post("/api/notes/", function(req,res) {
+router.post("/api/notes/", function(req,res) {
         newNote.push(req.body);
         res.json(true);
-    })
+        fs.writeFile(newNote, JSON.stringify(db, null, '\t'), err => err ? console.error(err) : null)
+});
+    
 module.exports = router; 
- 
