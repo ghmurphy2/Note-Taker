@@ -9,8 +9,6 @@ const routerHTML = require('./routes/htmlRoutes')
 const routerApi = require('./routes/apiRoutes')
 // require routing 
 
-
-
 const app = express();
 const PORT = process.env.PORT || 3000
 
@@ -19,11 +17,6 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.use('/', routerHTML)
 app.use('/', routerApi)
-
-
-
-
-
 
 app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT} `));
 // lsiten at local port

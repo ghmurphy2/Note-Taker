@@ -3,9 +3,14 @@
 const router = require('express').Router();
 const path = require('path')
 
-const note_data = require("../db/note_data");
+const newNote = require("../db/db.json");
 app.get("/api/notes/", function(req,res) {
-        res.json(note_data);
+        res.json(newNote);
     });
+
+app.post("/api/notes/", function(req,res) {
+        newNote.push(req.body);
+        res.json(true);
+    })
 module.exports = router; 
  
