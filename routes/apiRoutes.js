@@ -2,7 +2,7 @@
 // post api route
 const router = require('express').Router();
 const path = require('path')
-
+const fs = require('fs')
 const newNote = require("../db/db.json");
 router.get("/api/notes/", function(req,res) {
         res.json(newNote);
@@ -11,7 +11,7 @@ router.get("/api/notes/", function(req,res) {
 router.post("/api/notes/", function(req,res) {
         newNote.push(req.body);
         res.json(true);
-        fs.writeFile(newNote, JSON.stringify(db, null, '\t'), err => err ? console.error(err) : null)
+        fs.writeFile(newNote, JSON.stringify(newNote, null, '\t'), err => err ? console.error(err) : null)
 });
     
 module.exports = router; 
